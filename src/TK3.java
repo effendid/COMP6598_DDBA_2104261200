@@ -58,8 +58,31 @@ public class TK3 {
         menuUtama();
     }
 
+   
     static void hapusProduk(){
-
+        if(list.size()>0) {
+            System.out.print("\nInput Data yang akan dihapus : ");
+            String data_hapus = new Scanner(System.in).nextLine();
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i).getNama_produk().equals(data_hapus)) {
+                    System.out.print("Apakah Anda yakin dengan jumlah produk saat ini? [Ya | Tidak]");
+                    String ans = new Scanner(System.in).nextLine();
+                    while (!(ans.equalsIgnoreCase("Ya") || ans.equalsIgnoreCase("Tidak"))) {
+                        System.out.print("Apakah Anda yakin dengan jumlah produk saat ini? Masukan Hanya [Ya | Tidak]!");
+                        ans = new Scanner(System.in).nextLine();
+                    }
+                    if (ans.equalsIgnoreCase("Ya")) {
+                        list.remove(i--);
+                    }
+                    menuUtama();
+                } else {
+                    System.out.print("Produk yang dicari tidak ada \n");
+                }
+            }
+        }else{
+            System.out.print("Anda Belum menambahkan barang !");
+        }
+        menuUtama();
     }
     
     static void lihatProduk(){
